@@ -10,9 +10,9 @@
 //    keep the original copyright notice, author name, repository URL, and
 //    license text here. Do not remove upstream attribution.
 //
-//    Original source     : <ADD_ORIGINAL_AES_RTL_REPOSITORY_URL_HERE>
-//    Original author(s)  : <ADD_AUTHOR_NAME_OR_PROJECT_NAME_HERE>
-//    Original license    : <ADD_LICENSE_NAME_HERE>
+//    Original source     : https://github.com/124107157-KV/AES-128-Encryption-Core-with-UVM-Verification
+//    Original author(s)  : Keerthivasan Palani
+//    Original license    : MIT License
 //    Local modifications : Concatenated into one EDA Playground file and used
 //                          with the UVM verification environment.
 //
