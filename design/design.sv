@@ -1,14 +1,38 @@
 // ============================================================================
-//  design.sv  --  AES-128 encryption core (RIGHT pane in EDA Playground)
+//  design.sv  --  AES-128 encryption RTL core (EDA Playground RIGHT pane)
 // ----------------------------------------------------------------------------
-//  This is the original, FIPS-197-correct RTL (sbox.v + mixw.v + ks.v + top.v),
-//  concatenated unchanged. Logic / flow / ports are identical to the project.
-//  Byte mapping (verified against all 10 project test vectors):
+//  Purpose:
+//    Open-source style AES-128 encryption block used as the DUT for a complete
+//    SystemVerilog/UVM verification environment.
+//
+//  Source / attribution:
+//    If this RTL was copied or adapted from an external open-source AES core,
+//    keep the original copyright notice, author name, repository URL, and
+//    license text here. Do not remove upstream attribution.
+//
+//    Original source     : <ADD_ORIGINAL_AES_RTL_REPOSITORY_URL_HERE>
+//    Original author(s)  : <ADD_AUTHOR_NAME_OR_PROJECT_NAME_HERE>
+//    Original license    : <ADD_LICENSE_NAME_HERE>
+//    Local modifications : Concatenated into one EDA Playground file and used
+//                          with the UVM verification environment.
+//
+//  AES behavior:
+//    - AES-128 encryption only.
+//    - 128-bit plaintext input and 128-bit key input.
+//    - 128-bit ciphertext output.
+//    - Implements SubBytes, ShiftRows, MixColumns, AddRoundKey, and key schedule.
+//    - Final AES round excludes MixColumns, as required by AES-128.
+//    - One-cycle input-valid handshake through data_v_i.
+//    - One-cycle output-valid indication through res_v_o.
+//
+//  Byte mapping used by this RTL and the reference model:
 //     plaintext byte k  ->  data_i[8*k +: 8]   (byte 0 in bits [7:0])
 //     state[row][col]   =  byte (4*col + row)
 //     ciphertext byte k ->  res_o [8*k +: 8]
-//  Latency: assert data_v_i for one clock with data_i/key_i, then res_v_o
-//  pulses high for one cycle when the result is on res_o.
+//
+//  Latency:
+//     Assert data_v_i for one clk cycle with data_i/key_i stable. The DUT then
+//     iterates internally and pulses res_v_o for one cycle when res_o is valid.
 // ============================================================================
 
 `timescale 1ns / 1ps
