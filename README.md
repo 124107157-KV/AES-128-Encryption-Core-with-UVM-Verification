@@ -418,26 +418,26 @@ The verification environment is implemented in `testbench.sv`.
 
 ```mermaid
 flowchart TB
-    TEST[aes_test] --> ENV[aes_env]
+    TEST["aes_test"] --> ENV["aes_env"]
 
-    ENV --> AGENT[aes_agent]
-    ENV --> SB[aes_scoreboard]
-    ENV --> COV[aes_coverage]
+    ENV --> AGENT["aes_agent"]
+    ENV --> SB["aes_scoreboard"]
+    ENV --> COV["aes_coverage"]
 
-    AGENT --> SEQR[uvm_sequencer#(aes_item)]
-    AGENT --> DRV[aes_driver]
-    AGENT --> MON[aes_monitor]
+    AGENT --> SEQR["uvm_sequencer of aes_item"]
+    AGENT --> DRV["aes_driver"]
+    AGENT --> MON["aes_monitor"]
 
     SEQR --> DRV
-    DRV --> IF[aes_if]
-    IF --> DUT[aes DUT]
-    DUT --> IF
-    IF --> MON
+    DRV --> VIF["aes_if"]
+    VIF --> DUT["AES-128 DUT"]
+    DUT --> VIF
+    VIF --> MON
 
-    MON -- completed aes_item --> SB
-    MON -- completed aes_item --> COV
+    MON -- "completed aes_item" --> SB
+    MON -- "completed aes_item" --> COV
 
-    SB --> RM[Internal AES-128 reference model]
+    SB --> RM["Internal AES-128 reference model"]
 ```
 
 The design follows the standard UVM structure:
