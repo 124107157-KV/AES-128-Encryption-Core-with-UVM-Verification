@@ -873,29 +873,11 @@ Suggested improvements:
 The `design.sv` header contains attribution placeholders:
 
 ```text
-Original source     : <ADD_ORIGINAL_AES_RTL_REPOSITORY_URL_HERE>
-Original author(s)  : <ADD_AUTHOR_NAME_OR_PROJECT_NAME_HERE>
-Original license    : <ADD_LICENSE_NAME_HERE>
+Original source     : https://github.com/124107157-KV/AES-128-Encryption-Core-with-UVM-Verification
+Original author(s)  : Keerthivasan Palani
+Original license    : MIT License
 Local modifications : Concatenated into one EDA Playground file and used
                       with the UVM verification environment.
-```
-
-Before publishing publicly:
-
-1. If the AES RTL is your own work, state that clearly.
-2. If the AES RTL was copied or adapted from an open-source project, keep the original author, repository URL, and license.
-3. Add a license file such as:
-   - MIT
-   - Apache-2.0
-   - BSD-3-Clause
-4. Do not remove upstream attribution.
-
-Suggested README wording if the RTL is adapted:
-
-```text
-The AES RTL core is adapted from <project/repository>, originally authored by <author>.
-Local modifications were made to package the design into a single EDA Playground-compatible file
-and connect it to the UVM verification environment.
 ```
 
 ---
